@@ -1,0 +1,444 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{% static 'index1/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index1/vendor/boostrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index1/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/css/style.css'%}">
+
+
+    <style>
+        a {
+            color: #e90e65;
+        }
+        a:hover {
+            color: #f3e7e8;
+        }
+        .panel-group .active .panel-heading h1 a {
+            color: #e90e65;
+        }
+        body{
+            background: #282828;
+            font-size: 15px;
+        }
+        input{
+            font-size: 15px;
+        }
+        .scrollable-menu {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+
+        a:link {
+            color: #f3e7e8;
+        }
+        a:active {
+            color: #f3e7e8;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md  fixed-top maine-menu" style="background-color: black;" >
+    <div class="container" style="background-color: black;">
+        <button class="navbar-toggler ml-auto" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"> <span class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span> </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto" style="padding-left: 200px;">
+                <li class="nav-item "> <a class="nav-link active" href="{% url 'dashboard' %}">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'about' %}" tabindex="-1" aria-disabled="true" >About</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'PersonalInfo' %}" tabindex="-1" aria-disabled="true">Create Resume</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'resume' %}" tabindex="-1" aria-disabled="true">Resume</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'ChangePassword' %}" tabindex="-1" aria-disabled="true">Change Password</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'contact' %}" tabindex="-1" aria-disabled="true">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}" tabindex="-1" aria-disabled="true">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="acc-wizard">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default {% block active %} {% endblock %}">
+                    <div class="panel-heading" id="headingOne">
+                        <h1>
+                            <a href="{% block url %} {% endblock %}" >Basic infomation</a>
+                        </h1>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse {% block in %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="first_name" class="form-label">Upload Your Photo</label>
+                                        {{ form.picture }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first_name" class="form-label">First name</label>
+                                            {{ form.first_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last_name" class="form-label">Middle name</label>
+                                            {{ form.middle_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last_name" class="form-label">Last name</label>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="gender" class="form-label">Gender</label>
+                                            {{ form.gender }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="birth_date" class="form-label">DOB</label>
+                                            <input type="date" name="birth_date" id="id_birth_date" value="{{ user.resume.birth_date }}">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="panel panel-default {% block active1 %} {% endblock %}">
+                    <div class="panel-heading" id="headingTwo">
+                        <h1>
+                            <a href="{% block url1 %} {% endblock %}" data-parent="#accordion">Contact Information</a>
+                        </h1>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse {% block in1 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email</label>
+                                        {{ form1.email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address" class="form-label">Address</label>
+                                        {{ form1.Address }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="city" class="form-label">City</label>
+                                            {{ form1.city }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state" class="form-label">State</label>
+                                            {{ form1.state }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="Postal_Zip_Code" class="form-label">Pincode</label>
+                                            {{ form1.Postal_Zip_Code }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Phone_Number" class="form-label">Contact Number</label>
+                                            {{ form1.Phone_Number }}
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="panel panel-default {% block active2 %} {% endblock %}">
+                    <div class="panel-heading" id="headingThree">
+                        <h1>
+                            <a href="{% block url2 %} {% endblock %}" data-parent="#accordion">School Information</a>
+                        </h1>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse {% block in2 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="ssc_school" class="form-label">ssc_school</label>
+                                        {{ form2.ssc_school }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="ssc_year_of_passing" class="form-label">ssc_year_of_passing</label>
+                                            {{ form2.ssc_year_of_passing }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ssc_percentage" class="form-label">ssc_percentage</label>
+                                            {{ form2.ssc_percentage }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hsc_school" class="form-label">hsc_school</label>
+                                        {{ form2.hsc_school }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="hsc_year_of_passing" class="form-label">hsc_year_of_passing</label>
+                                            {{ form2.hsc_year_of_passing }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="hsc_percentage" class="form-label">hsc_percentage</label>
+                                            {{ form2.hsc_percentage }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="panel panel-default {% block active3 %} {% endblock %}">
+                    <div class="panel-heading" id="headingFour">
+                        <h1>
+                            <a href="{% block url3 %} {% endblock %}" data-parent="#accordion">College Information</a>
+                        </h1>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse {% block in3 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="ug_college" class="form-label">ug_college</label>
+                                        {{ form3.ug_college }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="ug_collage_cgpa" class="form-label">ug_collage_cgpa</label>
+                                            {{ form3.ug_collage_cgpa }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ug_degree" class="form-label">ug_degree</label>
+                                            {{ form3.ug_degree }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pg_college" class="form-label">pg_college</label>
+                                        {{ form3.pg_college }}
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="pg_collage_cgpa" class="form-label">pg_collage_cgpa</label>
+                                            {{ form3.pg_collage_cgpa }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pg_degree" class="form-label">pg_degree</label>
+                                            {{ form3.pg_degree }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="panel panel-default {% block active4 %} {% endblock %}">
+                    <div class="panel-heading" id="headingFive">
+                        <h1>
+                            <a href="{% block url4 %} {% endblock %}" data-parent="#accordion">Other Qualification</a>
+                        </h1>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse {% block in4 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="any_other_qualification" class="form-label">any_other_qualification</label>
+                                        {{ form4.any_other_qualification }}
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="panel panel-default {% block active5 %} {% endblock %}">
+                    <div class="panel-heading" id="headingSix">
+                        <h1>
+                            <a href="{% block url5 %} {% endblock %}" data-parent="#accordion">Experience</a>
+                        </h1>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse {% block in5 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="internship_experience" class="form-label">internship_experience</label>
+                                        {{ form5.internship_experience }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="about_you" class="form-label">Upload Your Video With detail information about you</label>
+                                        {{ form5.about_you }}
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="panel panel-default {% block active7 %} {% endblock %}">
+                    <div class="panel-heading" id="headingSix">
+                        <h1>
+                            <a href="{% block url7 %} {% endblock %}" data-parent="#accordion">Social Account</a>
+                        </h1>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse {% block in7 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="internship_experience" class="form-label">Github</label>
+                                        {{ form7.Github }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="about_you" class="form-label">Linkedin</label>
+                                        {{ form7.linkedin }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="about_you" class="form-label">Facebook</label>
+                                        {{ form7.facebook }}
+                                    </div>
+                                </fieldset>
+                                <input type="submit" value="Next" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="panel panel-default {% block active6 %} {% endblock %}">
+                    <div class="panel-heading" id="headingSeven">
+                        <h1>
+                            <a href="{% block url6 %} {% endblock %}" data-parent="#accordion">Skills</a>
+                        </h1>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse {% block in6 %} {% endblock %}">
+                        <div class="panel-body">
+                            <form method="POST" enctype="multipart/form-data"+>
+                                {% csrf_token %}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="id_skills" class="form-label">skills</label>
+                                        <input type="text" name="skills" id="id_skills"  value="{{ user.resume.skills }}" readonly >
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 200px">
+                                                Skills
+                                            </button>
+                                            <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton" style="width: 200px; " >
+                                                <input type="checkbox" value="java" class="chkvalues">java
+                                                <input type="checkbox" value="C" id="c" class="chkvalues">C
+                                                <input type="checkbox" value="C++" class="chkvalues">C++
+                                                <input type="checkbox" value="PYTHON" class="chkvalues">PYTHON
+                                                <input type="checkbox" value="C#" class="chkvalues">C#
+                                                <input type="checkbox" value="JAVA" class="chkvalues">java
+                                                <input type="checkbox" value="C" class="chkvalues">C
+                                                <input type="checkbox" value="C++" class="chkvalues">C++
+                                                <input type="checkbox" value="PYTHON" class="chkvalues">PYTHON
+                                                <input type="checkbox" value="C#" class="chkvalues">C#
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-group">
+                                        <label for="certificates" class="form-label">Select All Your Certificates</label>
+                                        {{ form6.certificates}}
+                                    </div>
+                                </fieldset>
+                                <div class="form-submit">
+                                    <input type="submit" value="Submit" style="background-color: #e90e65; width: 180px; color: white; font-size: 20px; font-weight: 500;">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="{% static 'index1/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'index1/vendor/boostrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'index1/vendor/acc-wizard-master/release/acc-wizard.min.js' %}"></script>
+<script src="{% static 'index1/vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+<script src="{% static 'index1/vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+<script src="{% static 'index1/vendor/jquery-steps/jquery.steps.min.js' %}"></script>
+<script src="{% static 'index1//minimalist-picker/dobpicker.js' %}"></script>
+<script src="{% static 'index1/js/main.js' %}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/6.2.0/d3.min.js"></script>
+
+<script>
+    $(document).ready(function()
+    {
+        $('.chkvalues').click(function()
+        {
+            var txt=""
+            $('.chkvalues:checked').each(function()
+            {
+                txt+=$(this).val()+" ,";
+            });
+            txt=txt.substring(0,txt.length-1);
+            $('#id_skills').val(txt);
+        });
+    });
+</script>
+
+</body>
+</html>

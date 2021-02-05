@@ -1,0 +1,347 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'register/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'register/css/style.css' %}">
+    <title>Girly</title>
+    <style>
+        /* unvisited link */a:link {
+            color: #f3e7e8;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: #f3e7e8;
+        }
+
+        /* selected link */
+        a:active {
+            color: #f3e7e8;
+        }
+
+        a{
+            color:#e90e65;
+        }
+
+    </style>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-md  fixed-top maine-menu" style="background-color: black;" >
+    <div class="container" style="background-color: black;">
+        <button class="navbar-toggler ml-auto" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"> <span class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span> </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item "> <a class="nav-link active" href="{% url 'home' %}">Home</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'about' %}" tabindex="-1" aria-disabled="true" >About</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'register' %}" tabindex="-1" aria-disabled="true">Create Resume</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'login' %}" tabindex="-1" aria-disabled="true">Login</a></li>
+
+                <li class="nav-item"> <a class="nav-link" href="{% url 'register' %}" tabindex="-1" aria-disabled="true">Register</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'filter' %}" tabindex="-1" aria-disabled="true">Filter</a></li>
+
+                <li class="nav-item"> <a class="nav-link" href="{% url 'contact' %}" tabindex="-1" aria-disabled="true">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="main" id="register" >
+    <div class="container" >
+        <div class="signup-content">
+            <div class="signup-img">
+                <img src="{% static 'register/images/signup-img.jpg' %}" alt="" style="max-width: 105%;" >
+            </div>
+            <div class="signup-form">
+                <form method="POST" class="register-form" id="register-form">
+                    {% csrf_token %}
+                    <h2>student registration form</h2>
+                    <div class="form-group">
+                        <label for="username">Username :</label>
+                        <input type="text" name="username" id="id_username" required/>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name">First Name :</label>
+                            <input type="text" name="first_name" id="id_first_name" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name  :</label>
+                            <input type="text" name="last_name" id="id_last_name" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email ID :</label>
+                        <input type="email" name="email" id="id_email" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password1">Password :</label>
+                        <div class="group">
+                            <input type="password" name="password1" id="id_password1" required/>
+                            <span><b>-Can't be similar to username &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Must have 8 character <br>
+                                -Atleast one special character   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -Must be alphanumric</b></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Confirm Password :</label>
+                        <input type="password" name="password2" id="id_password2" required/>
+                    </div>
+                    <div class="form-row">
+                        <input type="submit" value="Sign Up" class="submit" name="submit" id="submit" style="background:#e90e65;" />
+                    </div> <br>
+                    <div class="form-row">
+                        <p><h5>Already have an account?</h5><a href="{% url 'login'%}" style="color:#e90e65; "><h5> &nbspLogin </h5></a><po
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid fh5co-recent-work" style="background: #282828;">
+    <div class="container recent" id="activity">
+        <div class="row">
+            <div class="owl-carousel owl-carousel2 owl-theme">
+                <div>
+                    <div class="card"> <img class="card-img" src="{% static 'home/assets/img/recent-img2.jpg'%}" alt="">
+                        <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png' %}" class="heart" alt="heart icon"></a>
+                            <div class="bottom-text">
+                                <h5 class="card-title">Product photography</h5>
+                                <p class="card-text">Digital, Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card"> <img class="card-img" src="{% static 'home/assets/img/recent-img3.jpg' %}" alt="">
+                        <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                            <div class="bottom-text">
+                                <h5 class="card-title">Tour and potrait</h5>
+                                <p class="card-text">Digital, Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card"> <img class="card-img" src="{% static 'home/assets/img/recent-img4.jpg' %}" alt="">
+                        <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                            <div class="bottom-text">
+                                <h5 class="card-title">Classical photography</h5>
+                                <p class="card-text">Digital, Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="container-fluid recent fh5co-portfolio" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="bx bx-1">
+                <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c01.jpg' %}" alt="">
+                    <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                        <div class="bottom-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx bx-2">
+                <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c02.jpg'%}" alt="">
+                    <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                        <div class="bottom-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx bx-3">
+                <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c03.jpg'%}" alt="">
+                    <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                        <div class="bottom-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx bx-4">
+                <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c04.jpg'%}" alt="">
+                    <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                        <div class="bottom-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bx bx-middle" style="padding: 0;">
+                <div class="bx bx-5">
+                    <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c05.jpg'%}" alt="">
+                        <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                            <div class="bottom-text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bx bx-6">
+                    <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c06.jpg'%}" alt="">
+                        <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                            <div class="bottom-text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bx bx-7">
+                        <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c07.jpg'%}" alt="">
+                            <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                                <div class="bottom-text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bx bx-8">
+                        <div class="card"> <img class="card-img" src="{% static 'home/assets/img/c08.jpg'%}" alt="">
+                            <div class="card-img-overlay"> <a href="#"><img src="{% static 'home/assets/img/heart.png'%}" class="heart" alt="heart icon"></a>
+                                <div class="bottom-text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid fh5co-about-me" id="testimonial"  >
+    <div id="my-carousel" class="carousel slide" data-ride="carousel"  >
+        <div class="carousel-inner"  >
+            <div class="card"> <img class="card-img d-block w-100" src="{% static 'home/assets/img/about-me-img.jpg'%}"  alt="" >
+                <div class="card-img-overlay" style="background: #282828;" >
+                    <h2>People says about usw</h2>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption d-md-block"> <img src="{% static 'home/assets/img/quote-icon.png'%}" alt="">
+                    <p>Quick, intuitive and actually fun! I really like the CV score/review option which gives immediate feedback on ways to improve the CV. It was quick, intuitive and actually fun! I have never had fun writing a CV.</p>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <div class="carousel-caption d-md-block"> <img src="{% static 'home/assets/img/quote-icon.png'%}" alt="">
+                    <p>I utilized this app to the fullest, applying everything I learned, and even added some unique touches the CV software offered. Now, instead of stressing over what keyword or language to use on my CV, I can focus on which job offer to accept.</p>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="carousel-caption d-md-block"> <img src="{% static 'home/assets/img/quote-icon.png'%}" alt="">
+                    <p>Using this app to rebuild my CV was simple and actually enjoyable. The verbiage and explanations of skills available at the click of a button made my experience seamless.</p>
+                </div>
+            </div>
+        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#my-carousel" data-slide-to="0" > <img src="{% static 'home/assets/img/about-me-img1.png'%}" alt=""> <span>Sherrie Rose</span> </li>
+            <li class="active" data-target="#my-carousel" data-slide-to="1" aria-current="location"> <img src="{% static 'home/assets/img/about-me-img2.png'%}" alt=""> <span>Sherrie Rose</span> </li>
+            <li data-target="#my-carousel" data-slide-to="2"> <img src="{% static 'home/assets/img/about-me-img3.png'%}" alt=""> <span>Sherrie Rose</span> </li>
+        </ol>
+    </div>
+</div>
+
+
+
+<div class="container-fluid fh5co-insta-feed activity">
+    <div class="container recent">
+        <div class="row mb-5 pb-5">
+            <div class="col-lg-6">
+                <div class="twit-box">
+                    <div class="media mb-3"> <img class="align-self-start mr-3 rounded-circle" src="{% static 'home/assets/img/twit-girl-img.png'%}" alt="">
+                        <div class="media-body">
+                            <h5 class="mb-0 mt-3">Sandra reigel</h5>
+                            <p>@sandraphotography</p>
+                        </div>
+                    </div>
+                    <p class="text-justify"> Quick, intuitive and actually fun! I really like the CV score/review option which gives immediate feedback on ways to improve the CV. It was quick, intuitive and actually fun! I have never had fun writing a CV. </p>
+                    <div class="clearfix"> <a href="#" class="btn btn-primary mt-2 float-right">Follow</a> </div>
+                </div>
+            </div>
+            <div class="col-lg-6 feed-caro">
+                <h2>Instagram feed</h2>
+                <div class="owl-carousel owl-carousel4 owl-theme">
+                    <div>
+                        <div class="card"> <img class="card-img" src="{% static 'home/assets/img/feed-img1.jpg' %}" alt="">
+                            <div class="card-img-overlay"> </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card"> <img class="card-img" src="{% static 'home/assets/img/feed-img2.png'%}"  alt="">
+                            <div class="card-img-overlay"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="text-center d-block">Find me on social media</h2>
+        <div class="row social-links">
+            <ul class="nav mx-auto">
+                <li class="nav-item"> <a class="nav-link" href="https://www.facebook.com/fh5co"><img src="{% static 'home/assets/img/facebook.png'%}" alt=""></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="https://twitter.com/fh5co"><img src="{% static 'home/assets/img/twitter.png'%}" alt=""></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#"><img src="{% static 'home/assets/img/pinterest.png'%}" alt=""></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#"><img src="{% static 'home/assets/img/google-plus.png'%}" alt=""></a> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+ <script>
+    // Change the type of input to password or text
+        function Toggle() {
+            var temp = document.getElementById("id_password1");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'home/assets/js/jquery-3.3.1.slim.min.js'%}"></script>
+<script src="{% static 'home/assets/js/popper.min.js'%}" ></script>
+<script src="{% static 'home/assets/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'home/assets/js/owl.carousel.min.js'%}"></script>
+<script src="{% static 'home/assets/js/main.js'%}"></script>
+<script src="{% static 'register/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'register/js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</body>
+</html>

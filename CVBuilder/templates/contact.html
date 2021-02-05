@@ -1,0 +1,52 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block body %}
+
+    <footer>
+        <div class="row mr-0 ml-0">
+            <div class="col-md-6 content-us" style="background: #282828;">
+                <div class="contact-form" id="contact">
+                    <h3 class="text-uppercase">Contact me</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if user.username %}
+                            <input type="text" name="username" class="form-control" placeholder="Username" required="" value="{{user.username}}" id="id_username">
+                            <input type="email" name="From" class="form-control" placeholder="Your Email" required="" value="{{user.email}}"id="id_From">
+                        {% else %}
+                            {{ Cform.username }}
+                            <input type="email" name="From" class="form-control" placeholder="Your Email" required="" value="{{user.email}}"id="id_From">
+                        {% endif %}
+
+                        {{ Cform.Subject }}
+                        {{ Cform.Message }}
+
+                        <button type="submit" value="send" onclick="sendEmail()" >Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <script type="text/javascript">
+            function sendEmail() {
+                var x=document.getElementById("id_From").value;
+
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "harshdeepmahajan@mvaburhanpur.com",
+                    Password: "Deep@.com",
+
+                    To:x,
+
+                    From: "harshdeepmahajan@mvaburhanpur.com",
+                    Subject: "mail related your query",
+                    Body: "hello thank you for contacting us your problem will be solved soon",
+                })
+            }
+        </script>
+    </footer>
+{% endblock %}
